@@ -1,0 +1,2 @@
+Reading POS tagger model from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [1.4 sec].
+https://www.google.com: Search_VB Images_NNS Maps_NNS Play_VBP YouTube_NNP News_NNP Gmail_NNP Drive_NNP More_RBR ''_'' Web_NN History_NN |_CD Settings_NNS |_VBP Sign_NN inSearch_NN Images_NNS Maps_NNS Play_VBP YouTube_NNP News_NNP Gmail_NNP Drive_NNP More_RBR ''_'' Search_VB Images_NNS Maps_NNS Play_VBP YouTube_NNP News_NNP Gmail_NNP Drive_NNP More_RBR ''_'' Search_VB 
