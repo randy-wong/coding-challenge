@@ -3,27 +3,22 @@
 package com.coveros.exercise.creditcard;
 
 public class CreditCard {
-
+	
+	// String for card digits
 	private static String string;
+	// CreditCardType for the type of credit card
 	private static CreditCardType type;
 
 	// Default Constructor
 	public CreditCard() {}
 
-	// Constructor
+	// Constructor that takes in the digits as strings, validates with Luhn Algorithm and sets card type
 	public CreditCard(String string) throws InvalidCardNumberException {
+		// Gets rid of all the extra typing, possible to use stronger string rules
 		CreditCard.string = string.replaceAll("-", "").replaceAll(" ", "");
+		// Throw error if Luhn Algorithm is incorrect
 		if (CreditCard.calculateCheckDigit(CreditCard.string) == 0) { throw new BadCheckDigitException( CreditCard.string + ": is an invalid digit sequence"); }
 		getCardType();
-//		// VISA Check
-//		if (CreditCard.string.charAt(0) == '4') {
-//			System.out.println(CreditCard.string.length());
-//			if (CreditCard.string.length() != 13 && CreditCard.string.length() != 16) { 
-//				throw new InvalidCardLengthException(""); }
-//		}
-//		
-//		// MASTERCARD Check
-//		if (CreditCard.subtring(0 , 1))
 	}
 
 	// Taken this method from online http://stackoverflow.com/questions/20740444/check-credit-card-validity-using-luhn-algorithm
@@ -50,62 +45,38 @@ public class CreditCard {
 	}
 
 	public CreditCardType getCardType() throws InvalidCardNumberException {
-//		String[] digits = string.split("\\D");
+		// Convert digit string to an array because it is easier to write with array methods
 		String[] digits = string.split("");
 		
+		// If first number is a 4, then it is considered a VISA
 		if (digits[0].equals("4")) {
+			// Set card to VISA
 			if (digits.length == 13 || digits.length == 16) {
 				type = CreditCardType.VISA;
 				return CreditCard.type;
 			}
-			else { throw new InvalidCardLengthException(type + " card must be 13 or 16 digits long ");}
+			else {
+				// Throw error if card type is invalid
+				throw new InvalidCardLengthException(type + " card must be 13 or 16 digits long ");
+			}
 		}
 		
+		// Similar check to VISA but for MASTERCARD
 		else if (digits[0].equals("5")) {
 			if (digits[1].equals("0") || digits[1].equals("1") || digits[1].equals("2") ||
 					digits[1].equals("3") || digits[1].equals("4") || digits[1].equals("5")) {
-				type = CreditCardType.MASTERCARD;
 				if (digits.length == 16 ) {	
+					type = CreditCardType.MASTERCARD;
 					return CreditCard.type;
 				}
 				else { throw new InvalidCardLengthException(type + " card must be 16 digits long");}
 			}
 		}
-		
-//		else if (digits[0].equals("5") && (digits[1].equals("0") && digits.length == 16)) {
-//			System.out.println("MASTERCARD TEST 1");
-//			return CreditCardType.MASTERCARD;
-//		}
-//
-//		else if (digits[0].equals("5") && (digits[1].equals("1") && digits.length == 16)) {
-//			System.out.println("MASTERCARD TEST 2");
-//			return CreditCardType.MASTERCARD;
-//		}
-//		
-//		else if (digits[0].equals("5") && (digits[1].equals("2") && digits.length == 16)) {
-//			System.out.println("MASTERCARD TEST 3");
-//			return CreditCardType.MASTERCARD;
-//		}
-//		
-//		else if (digits[0].equals("5") && (digits[1].equals("3") && digits.length == 16)) {
-//			System.out.println("MASTERCARD TEST 4");
-//			return CreditCardType.MASTERCARD;
-//		}
-//		
-//		else if (digits[0].equals("5") && (digits[1].equals("4") && digits.length == 16)) {
-//			System.out.println("MASTERCARD TEST 5");
-//			return CreditCardType.MASTERCARD;
-//		}
-//		
-//		else if (digits[0].equals("5") && (digits[1].equals("5") && digits.length == 16)) {
-//			System.out.println("MASTERCARD TEST 6");
-//			return CreditCardType.MASTERCARD;
-//		}
-		
+
 		else if (digits[0].equals("3")) {
 			if(digits[1].equals("4") || digits[1].equals("7")) {
-				type = CreditCardType.AMERICAN_EXPRESS;
 				if (digits.length == 15) {
+					type = CreditCardType.AMERICAN_EXPRESS;
 					return CreditCard.type;
 				}
 				else { 
@@ -113,20 +84,10 @@ public class CreditCard {
 				}
 			}
 		}
-//
-//		else if (digits[0].equals("3") && (digits[1].equals("4") && (digits.length == 15))) {
-//			System.out.println("AMERICAN_EXPRESS TEST 1");
-//			return CreditCardType.AMERICAN_EXPRESS;
-//		}
-//
-//		else if (digits[0].equals("3") && (digits[1].equals("7") && (digits.length == 15))) {
-//			System.out.println("AMERICAN_EXPRESS TEST 2");
-//			return CreditCardType.AMERICAN_EXPRESS;
-//		}
-		
+
 		else if (digits[0].equals("6") && (digits[1].equals("0") && (digits[2].equals("1") && (digits[3].equals("1"))))) {
-			type = CreditCardType.DISCOVER_CARD;
 			if (digits.length == 16) { 
+				type = CreditCardType.DISCOVER_CARD;
 				return CreditCardType.DISCOVER_CARD;
 			}
 			else {
@@ -135,41 +96,22 @@ public class CreditCard {
 		}
 
 		else if (digits[0].equals("6") && (digits[1].equals("5"))) {
-			type = CreditCardType.DISCOVER_CARD;
 			if (digits.length == 16) { 
+				type = CreditCardType.DISCOVER_CARD;
 				return type;
 			}
 			else {
 				throw new InvalidCardLengthException(type + " card must be 16 digits long");
 			}
 		}
-		
-//		else if (digits[0].equals("6") && (digits[1].equals("5") && (digits.length == 16))) {
-//			System.out.println("DISCOVER_CARD TEST 2");
-//			return CreditCardType.DISCOVER_CARD;
-//		}
-		
+
 		else if(digits.length > 11 && digits.length < 20) {
 			type = CreditCardType.UNKNOWN;
 			return type; 
 		}
-
-		throw new InvalidCardLengthException("Incorrect number of digits");
-//		else if(digits[0].equals('5') && (digits[1].equals('0') || (digits[1].equals('1') 
-//				|| (digits[1].equals('2') || (digits[1].equals('3') || (digits[1].equals('4') 
-//						|| (digits[1].equals('5') && digits.length == 16))))))) {
-//			return CreditCardType.MASTERCARD;
-//		}
-//		
-//		else if(digits[0].equals('3') && (digits[1].equals('4') || (digits[1].equals('7') && (digits.length == 15)))) {
-//			return CreditCardType.AMERICAN_EXPRESS;
-//		}
-//		else if(digits[0].equals('6') && (digits[1].equals('0') && (digits[2].equals('1') && (digits[3].equals('1') 
-//				|| ((digits[0].equals('6') && (digits[1].equals('5')) && (digits.length == 15))))))) {
-//			return CreditCardType.DISCOVER_CARD;
-//		}
 		
-				
+		// Error
+		throw new InvalidCardLengthException("Incorrect number of digits, Invalid Card");
 	}
 
 	public static void main(String[] args) throws InvalidCardNumberException {

@@ -111,11 +111,6 @@ public class CreditCardTest {
   public void testTooShortInvalidInput() throws InvalidCardNumberException {
 	new CreditCard("0000 0000");
   }
-
-//  @Test(expected = BadCheckDigitException.class)
-//  public void testLongInvalidCheckMasterCard() throws InvalidCardNumberException {
-//    new CreditCard("4111 1111 1111 1111 9");
-//  }
   
   
 }
