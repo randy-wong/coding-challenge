@@ -43,56 +43,79 @@ public class CreditCardTest {
   public void testBadCheckDigit() throws InvalidCardNumberException {
     new CreditCard("4111 1111 1111 1110");
   }
-//
-//  @Test(expected = InvalidCardLengthException.class)
-//  public void testShortValidCheckDigit() throws InvalidCardNumberException {
-//    new CreditCard("411-111-111-117");
-//  }
-//
-//  @Test(expected = InvalidCardLengthException.class)
-//  public void testLongValidCheckDigit() throws InvalidCardNumberException {
-//    new CreditCard("4111 1111 1111 1111 3");
-//  }
-//
+
+  @Test(expected = InvalidCardLengthException.class)
+  public void testShortValidCheckDigit() throws InvalidCardNumberException {
+    new CreditCard("411-111-111-117");
+  }
+
+  @Test(expected = InvalidCardLengthException.class)
+  public void testLongValidCheckDigit() throws InvalidCardNumberException {
+    new CreditCard("4111 1111 1111 1111 3");
+  }
+
+  @Test(expected = BadCheckDigitException.class)
+  public void testLongInvalidCheck() throws InvalidCardNumberException {
+    new CreditCard("4111 1111 1111 1111 9");
+  }
+
+  @Test
+  public void testGetCardTypeVisa() throws InvalidCardNumberException {
+    final CreditCard creditCard = new CreditCard("4111 1111 1111 1111");
+    assertEquals(CreditCardType.VISA, creditCard.getCardType());
+  }
+
+  @Test
+  public void testGetCardMasterCard() throws InvalidCardNumberException {
+    final CreditCard creditCard = new CreditCard("5555 5555 5555 4444");
+    assertEquals(CreditCardType.MASTERCARD, creditCard.getCardType());
+  }
+
+  @Test
+  public void testGetCardAmericanExpress34() throws InvalidCardNumberException {
+    final CreditCard creditCard = new CreditCard("3411 111111 11111");
+    assertEquals(CreditCardType.AMERICAN_EXPRESS, creditCard.getCardType());
+  }
+
+  @Test
+  public void testGetCardAmericanExpress37() throws InvalidCardNumberException {
+    final CreditCard creditCard = new CreditCard("3700-000000-00002");
+    assertEquals(CreditCardType.AMERICAN_EXPRESS, creditCard.getCardType());
+  }
+
+  @Test
+  public void testGetCardDiscover() throws InvalidCardNumberException {
+    final CreditCard creditCard = new CreditCard("6011111111111117");
+    assertEquals(CreditCardType.DISCOVER_CARD, creditCard.getCardType());
+  }
+
+  @Test
+  public void testGetCardUnknown() throws InvalidCardNumberException {
+    final CreditCard creditCard = new CreditCard("9999 9999 9999 9995");
+    assertEquals(CreditCardType.UNKNOWN, creditCard.getCardType());
+  }
+  
+  // Additional Tests
+  // Obtained Additional Testing Digits from https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm
+  @Test
+  public void testCalculateCheckDigitMasterCard() {
+    assertEquals(1, CreditCard.calculateCheckDigit("5555 5555 5555 4444"));
+  }
+
+  @Test(expected = BadCheckDigitException.class)
+  public void testBadCheckDigitMasterCard() throws InvalidCardNumberException {
+    new CreditCard("5555 5555 5555 4440");
+  }
+
+  @Test(expected = InvalidCardLengthException.class)
+  public void testTooShortInvalidInput() throws InvalidCardNumberException {
+	new CreditCard("0000 0000");
+  }
+
 //  @Test(expected = BadCheckDigitException.class)
-//  public void testLongInvalidCheck() throws InvalidCardNumberException {
+//  public void testLongInvalidCheckMasterCard() throws InvalidCardNumberException {
 //    new CreditCard("4111 1111 1111 1111 9");
 //  }
-//
-//  @Test
-//  public void testGetCardTypeVisa() throws InvalidCardNumberException {
-//    final CreditCard creditCard = new CreditCard("4111 1111 1111 1111");
-//    assertEquals(CreditCardType.VISA, creditCard.getCardType());
-//  }
-//
-//  @Test
-//  public void testGetCardMasterCard() throws InvalidCardNumberException {
-//    final CreditCard creditCard = new CreditCard("5555 5555 5555 4444");
-//    assertEquals(CreditCardType.MASTERCARD, creditCard.getCardType());
-//  }
-//
-//  @Test
-//  public void testGetCardAmericanExpress34() throws InvalidCardNumberException {
-//    final CreditCard creditCard = new CreditCard("3411 111111 11111");
-//    assertEquals(CreditCardType.AMERICAN_EXPRESS, creditCard.getCardType());
-//  }
-//
-//  @Test
-//  public void testGetCardAmericanExpress37() throws InvalidCardNumberException {
-//    final CreditCard creditCard = new CreditCard("3700-000000-00002");
-//    assertEquals(CreditCardType.AMERICAN_EXPRESS, creditCard.getCardType());
-//  }
-//
-//  @Test
-//  public void testGetCardDiscover() throws InvalidCardNumberException {
-//    final CreditCard creditCard = new CreditCard("6011111111111117");
-//    assertEquals(CreditCardType.DISCOVER_CARD, creditCard.getCardType());
-//  }
-//
-//  @Test
-//  public void testGetCardUnknown() throws InvalidCardNumberException {
-//    final CreditCard creditCard = new CreditCard("9999 9999 9999 9995");
-//    assertEquals(CreditCardType.UNKNOWN, creditCard.getCardType());
-//  }
-
+  
+  
 }

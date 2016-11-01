@@ -4,14 +4,23 @@ import org.junit.Test;
 
 public class InvalidCardNumberException extends Exception {
 	
-	@Test(expected = BadCheckDigitException.class)
-	public InvalidCardNumberException() {
-		
-		
+	public InvalidCardNumberException(String message) {
+		super(message);
+	}	
+}
+
+class BadCheckDigitException extends InvalidCardNumberException {
+
+	public BadCheckDigitException(String message) {
+		super(message); 
+		// TODO Auto-generated constructor stub
 	}
-	@Test(expected = BadCheckDigitException.class)
-	private class BadCheckDigitException{}
-	@Test(expected = BadCheckDigitException.class)
-	private class InvalidCardLengthException{}
-	
+}
+
+class InvalidCardLengthException extends InvalidCardNumberException{
+
+	public InvalidCardLengthException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
 }
