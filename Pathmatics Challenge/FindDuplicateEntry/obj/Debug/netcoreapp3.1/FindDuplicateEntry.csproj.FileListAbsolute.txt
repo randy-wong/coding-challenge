@@ -1,0 +1,13 @@
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.csprojAssemblyReference.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.AssemblyInfoInputs.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.AssemblyInfo.cs
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.csproj.CoreCompileInputs.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\bin\Debug\netcoreapp3.1\FindDuplicateEntry.exe
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\bin\Debug\netcoreapp3.1\FindDuplicateEntry.deps.json
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\bin\Debug\netcoreapp3.1\FindDuplicateEntry.runtimeconfig.json
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\bin\Debug\netcoreapp3.1\FindDuplicateEntry.runtimeconfig.dev.json
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\bin\Debug\netcoreapp3.1\FindDuplicateEntry.dll
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\bin\Debug\netcoreapp3.1\FindDuplicateEntry.pdb
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.dll
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.pdb
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntry\obj\Debug\netcoreapp3.1\FindDuplicateEntry.genruntimeconfig.cache
