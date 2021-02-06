@@ -1,0 +1,4 @@
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithHash.csprojAssemblyReference.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithHash.AssemblyInfoInputs.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithHash.AssemblyInfo.cs
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithHash.csproj.CoreCompileInputs.cache

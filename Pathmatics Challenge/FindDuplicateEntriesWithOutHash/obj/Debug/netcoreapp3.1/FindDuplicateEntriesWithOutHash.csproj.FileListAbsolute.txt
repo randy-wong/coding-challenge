@@ -1,0 +1,13 @@
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\bin\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.exe
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\bin\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.deps.json
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\bin\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.runtimeconfig.json
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\bin\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.runtimeconfig.dev.json
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\bin\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.dll
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\bin\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.pdb
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.csprojAssemblyReference.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.AssemblyInfoInputs.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.AssemblyInfo.cs
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.csproj.CoreCompileInputs.cache
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.dll
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.pdb
+C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\obj\Debug\netcoreapp3.1\FindDuplicateEntriesWithOutHash.genruntimeconfig.cache
