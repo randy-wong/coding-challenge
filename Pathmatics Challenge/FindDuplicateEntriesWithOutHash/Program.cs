@@ -4,6 +4,101 @@ using System.Text.RegularExpressions;
 
 namespace FindDuplicateEntriesWithOutHash
 {
+    interface FindDuplicates
+    {
+        // Input should be ideally any datasource
+        //
+        string[] Input();
+        // Scub out data for duplicate entries with slightly different names
+        // E.G.: "1-800-Flowers.com" and "1800Flowers.com"
+        // https://stackoverflow.com/questions/6400416/figure-out-if-a-business-name-is-very-similar-to-another-one-python
+        //
+
+        string[] Normalize(string compare1);
+        // Does it encapsulate?
+        // What percentage similarity is it?
+        // Does size of the word matter?
+        // How many of the string tokens are capitalization?
+        // 
+
+        bool Compare(string[] compare1, string[] compare2);
+
+        void Output(string entry1, string entry2, string[] compare1, string[] compare2);
+    }
+
+    class WithoutHash : FindDuplicates
+    {
+        public string[] Input()
+        {
+            // Resources: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
+            Console.WriteLine("Enter location of advertisers file:");
+            string path = Console.ReadLine();
+            // Read each line of the file into a string array. Each element
+            // of the array is one line of the file.
+            string[] entries = System.IO.File.ReadAllLines(path);
+            Array.Sort(entries);
+            return entries;
+            // string[] company_names = System.IO.File.ReadAllLines(@"C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\advertisers.txt");
+        }
+        public string[] Normalize(string index)
+        {
+            // Tokenize by case
+            // Cited code: https://stackoverflow.com/questions/36147162/c-sharp-string-split-separate-string-by-uppercase?lq=1
+            return Regex.Split(index, @"(?<!^)(?=[A-Z])");
+        }
+
+        public bool Compare(string[] compare1, string[] compare2)
+        {
+            // Maybe try Language Integrated Query (LINQ)?
+            // Compare each token
+
+            // If the first element is not the same then return false
+            if (compare1[0] != compare2[0])
+            {
+                return false;
+            }
+
+            else
+            {
+
+                // If the first element is the same then the comparison rate is set at 1
+                double comparison_rate = 1;
+                // Ternary statement to find the smaller value
+                double smaller_word = (compare1.Length <= compare2.Length) ? smaller_word = compare1.Length : smaller_word = compare2.Length;
+                double bigger_word = (compare1.Length > compare2.Length) ? bigger_word = compare1.Length : bigger_word = compare2.Length;
+                for (int i = 1; i < smaller_word; i++)
+                {
+                    if (compare1[i] == compare2[i])
+                    {
+                        comparison_rate++;
+                    }
+                }
+                if(bigger_word == smaller_word && comparison_rate == smaller_word)
+                {
+                    return true;
+                }
+                // Arbitrary way of comparing the what should be displayed
+                // Half of the smaller input
+                bool pass = comparison_rate >= (bigger_word / 2);
+                if (pass && (comparison_rate > 2))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public void Output(string entry1, string entry2, string[] compare1, string[] compare2)
+        {
+            if (Compare(compare1, compare2))
+            {
+                Console.WriteLine(entry1 + " and " + entry2 + " are similar.");
+            }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -13,28 +108,11 @@ namespace FindDuplicateEntriesWithOutHash
             // Removed extra caracters https://stackoverflow.com/questions/43334055/notepad-remove-non-alpanumeric-characters
             // 
 
-            // Does it encapsulate?
-            // What percentage similarity is it?
-            // Does size of the word matter?
-            // How many of the string tokens are capitalization?
-            // 
+            int counter = 0;
 
-            // Resources
-            // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
-            // 
+            WithoutHash implementation_without_hash = new WithoutHash();
 
-            // Read each line of the file into a string array. Each element
-            // of the array is one line of the file.
-            string[] company_names = System.IO.File.ReadAllLines(@"C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\advertisers.txt");
-
-            // Sort the array
-            Array.Sort(company_names);
-
-            // Testing space
-            string[] a = Normalize("20th Century Fox Television");
-            string[] b = Normalize("20th Century Fox Studios(foxmovies.com)");
-            Compare(a, b);
-
+            string[] company_names = implementation_without_hash.Input();
 
             // Iterate through the array
             for (int i = 0; i < company_names.Length; i++)
@@ -45,100 +123,18 @@ namespace FindDuplicateEntriesWithOutHash
                     break;
                 }
 
-                // double comparison_rate = 0;
-                // Console.WriteLine(company_names[i]);
-                // Console.WriteLine(company_names[i + 1]);
-
+                // Variables 
                 string company_to_compare1 = company_names[i];
                 string company_to_compare2 = company_names[i + 1];
 
-                // Tokenize by case
-                // https://stackoverflow.com/questions/36147162/c-sharp-string-split-separate-string-by-uppercase?lq=1
-                // Console.WriteLine("Comparing " + company_names[i] + " and " + company_names[++i]);
-                string[] compare1 = Normalize(company_to_compare1);
-                string[] compare2 = Normalize(company_to_compare2);
+                // Passing variables through Normalize function
+                string[] compare1 = implementation_without_hash.Normalize(company_to_compare1);
+                string[] compare2 = implementation_without_hash.Normalize(company_to_compare2);
 
-                if (Compare(compare1, compare2))
-                {
-                    Console.WriteLine(company_to_compare1 + " and " + company_to_compare2 + " are similar.");
-                }
-
-
-
-                // if (comparison_rate != 0 && (comparison_rate < ((compare1.Length + compare2.Length) / 2)))
-                // {
-                //     Console.WriteLine("Comparison Rate: " + comparison_rate + " : " + company_names[i] + " and " + company_names[i + 1] + " are similar.");
-                // }
+                // Passing variables through Output function which also passes it through Compare function
+                implementation_without_hash.Output(company_to_compare1, company_to_compare2, compare1, compare2);
             }
-
-
-
-            // Display the file contents by using a foreach loop.
-            // System.Console.WriteLine(company_names[0]);
-
             System.Console.ReadKey();
         }
-
-        public static string[] Normalize(string index)
-        {
-            // Tokenize by case
-            // https://stackoverflow.com/questions/36147162/c-sharp-string-split-separate-string-by-uppercase?lq=1
-            return Regex.Split(index, @"(?<!^)(?=[A-Z])");
-            // return Regex.Split(index, @"\D+");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="compare1"></param>
-        /// <param name="compare2"></param>
-        /// <returns></returns>
-        public static bool Compare(string[] compare1, string[] compare2)
-        {
-            // Maybe try Language Integrated Query (LINQ)?
-            // Compare each token
-
-            if (compare1[0] != compare2[0])
-            {
-                return false;
-            }
-
-            else
-            {
-                int comparison_rate = 1;
-                int token_size = (compare1.Length <= compare2.Length) ? token_size = compare1.Length : token_size = compare2.Length;
-                for (int i = 1; i < token_size; i++)
-                {
-                    if (compare1[i] == compare2[i])
-                    {
-                        comparison_rate++;
-                    }
-                }
-                if (comparison_rate > (compare2.Length / 2))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            /*
-            for (int j = 0; j < compare1.Length; j++)
-            {
-                for (int k = 0; k < compare2.Length; k++)
-                {
-                    System.Console.WriteLine(compare1[j] + " comparing " + compare2[k]);
-                    if (compare1[j] == compare2[k])
-                    {
-
-                        comparison_rate++;
-                    }
-                }
-            } 
-            */
-        }
-
     }
 }
