@@ -8,7 +8,7 @@ namespace FindDuplicateEntriesWithOutHash
     {
         // Input should be ideally any datasource
         //
-        string[] Input();
+        void Input();
         // Scub out data for duplicate entries with slightly different names
         // E.G.: "1-800-Flowers.com" and "1800Flowers.com"
         // https://stackoverflow.com/questions/6400416/figure-out-if-a-business-name-is-very-similar-to-another-one-python
@@ -23,23 +23,29 @@ namespace FindDuplicateEntriesWithOutHash
 
         bool Compare(string[] compare1, string[] compare2);
 
-        void Output(string entry1, string entry2, string[] compare1, string[] compare2);
+        void Output(string str);
     }
 
     class WithoutHash : FindDuplicates
     {
-        public string[] Input()
+        private string[] entries;
+        public void Input()
         {
             // Resources: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
             Console.WriteLine("Enter location of advertisers file:");
             string path = Console.ReadLine();
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
-            string[] entries = System.IO.File.ReadAllLines(path);
+            entries = System.IO.File.ReadAllLines(path);
             Array.Sort(entries);
-            return entries;
             // string[] company_names = System.IO.File.ReadAllLines(@"C:\Users\randy\source\repos\coding_challenge\Pathmatics Challenge\FindDuplicateEntriesWithOutHash\advertisers.txt");
         }
+
+        public string[] GetEntries()
+        {
+            return entries;
+        }
+
         public string[] Normalize(string index)
         {
             // Tokenize by case
@@ -91,12 +97,10 @@ namespace FindDuplicateEntriesWithOutHash
             }
         }
 
-        public void Output(string entry1, string entry2, string[] compare1, string[] compare2)
+        // Considering piping output to file
+        public void Output(string str)
         {
-            if (Compare(compare1, compare2))
-            {
-                Console.WriteLine(entry1 + " and " + entry2 + " are similar.");
-            }
+            Console.WriteLine(str);
         }
     }
     class Program
@@ -108,11 +112,9 @@ namespace FindDuplicateEntriesWithOutHash
             // Removed extra caracters https://stackoverflow.com/questions/43334055/notepad-remove-non-alpanumeric-characters
             // 
 
-            int counter = 0;
-
             WithoutHash implementation_without_hash = new WithoutHash();
-
-            string[] company_names = implementation_without_hash.Input();
+            implementation_without_hash.Input();
+            string[] company_names = implementation_without_hash.GetEntries();
 
             // Iterate through the array
             for (int i = 0; i < company_names.Length; i++)
@@ -123,6 +125,8 @@ namespace FindDuplicateEntriesWithOutHash
                     break;
                 }
 
+                string write;
+
                 // Variables 
                 string company_to_compare1 = company_names[i];
                 string company_to_compare2 = company_names[i + 1];
@@ -132,7 +136,11 @@ namespace FindDuplicateEntriesWithOutHash
                 string[] compare2 = implementation_without_hash.Normalize(company_to_compare2);
 
                 // Passing variables through Output function which also passes it through Compare function
-                implementation_without_hash.Output(company_to_compare1, company_to_compare2, compare1, compare2);
+                if (implementation_without_hash.Compare(compare1, compare2))
+                {
+                    write = company_to_compare1 + " and " + company_to_compare2 + " are similar.";
+                    implementation_without_hash.Output(write);
+                }
             }
             System.Console.ReadKey();
         }
