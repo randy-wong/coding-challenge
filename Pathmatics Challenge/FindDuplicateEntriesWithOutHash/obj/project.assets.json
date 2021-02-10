@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\FindDuplicateEntriesWithOutHash.csproj",
-      "projectName": "FindDuplicateEntriesWithOutHash",
-      "projectPath": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\FindDuplicateEntriesWithOutHash.csproj",
+      "projectUniqueName": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\FindDuplicateEntries.csproj",
+      "projectName": "FindDuplicateEntries",
+      "projectPath": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\FindDuplicateEntries.csproj",
       "packagesPath": "C:\\Users\\randy\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\obj\\",
       "projectStyle": "PackageReference",

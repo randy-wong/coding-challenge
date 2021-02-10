@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZIl9rP8sqlS9KTyHpLQ/8YSv8ErZMbVvLS5zsEbmcYjElrTiGX0FYRpr1y+E7obQgpsBgJ8f0wB/cIpVo39tMQ==",
+  "dgSpecHash": "mw/AATCfI2WC194wjqXqDPuG3XlF54bI8EZA4BdG4zbDTx6bTdfCHAcBA81ymmJmS6MfOG7O7CKAevY+tN3vsA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\FindDuplicateEntriesWithOutHash.csproj",
+  "projectFilePath": "C:\\Users\\randy\\source\\repos\\coding_challenge\\Pathmatics Challenge\\FindDuplicateEntriesWithOutHash\\FindDuplicateEntries.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

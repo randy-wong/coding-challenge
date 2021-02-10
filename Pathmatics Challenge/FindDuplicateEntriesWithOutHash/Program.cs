@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace FindDuplicateEntriesWithOutHash
 {
+    // 
     interface FindDuplicates
     {
         // Input should be ideally any datasource
         //
         void Input();
-        // Scub out data for duplicate entries with slightly different names
+        // Scrub out data for duplicate entries with slightly different names
         // E.G.: "1-800-Flowers.com" and "1800Flowers.com"
         // https://stackoverflow.com/questions/6400416/figure-out-if-a-business-name-is-very-similar-to-another-one-python
         //
@@ -66,12 +66,14 @@ namespace FindDuplicateEntriesWithOutHash
 
             else
             {
-
                 // If the first element is the same then the comparison rate is set at 1
+                // Rationale: A majority of the company names that are similar will have the same first word
                 double comparison_rate = 1;
-                // Ternary statement to find the smaller value
+                // Ternary statement to find the smaller word
                 double smaller_word = (compare1.Length <= compare2.Length) ? smaller_word = compare1.Length : smaller_word = compare2.Length;
+                // Ternary statement to find the bigger word
                 double bigger_word = (compare1.Length > compare2.Length) ? bigger_word = compare1.Length : bigger_word = compare2.Length;
+                // Use the length of the smaller company name to
                 for (int i = 1; i < smaller_word; i++)
                 {
                     if (compare1[i] == compare2[i])
@@ -79,12 +81,14 @@ namespace FindDuplicateEntriesWithOutHash
                         comparison_rate++;
                     }
                 }
-                if(bigger_word == smaller_word && comparison_rate == smaller_word)
+
+                // Essentially checks if both the normalized strings are the same
+                if (bigger_word == smaller_word && comparison_rate == smaller_word)
                 {
                     return true;
                 }
-                // Arbitrary way of comparing the what should be displayed
-                // Half of the smaller input
+                // Arbitrary way of comparing what should be displayed
+                // Half of the bigger company name divided by two
                 bool pass = comparison_rate >= (bigger_word / 2);
                 if (pass && (comparison_rate > 2))
                 {
@@ -116,7 +120,7 @@ namespace FindDuplicateEntriesWithOutHash
             implementation_without_hash.Input();
             string[] company_names = implementation_without_hash.GetEntries();
 
-            // Iterate through the array
+            // Iterate through the array and check for two elements at once
             for (int i = 0; i < company_names.Length; i++)
             {
                 // Stop at the last element
