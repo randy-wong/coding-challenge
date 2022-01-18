@@ -16,9 +16,6 @@ namespace ConsoleApp1
                 company_names_from_file.add(original_name_entry.replaceAll("[\\W]|_", "").toLowerCase());
             }
 
-
-
-
             Map<String, List<Integer>> map = new HashMap();
             for (int index_of_company_name = 0; index_of_company_name < processed_company_names.size(); index_of_company_name++) {
                 String index = companyNames.get(index_of_company_name);
